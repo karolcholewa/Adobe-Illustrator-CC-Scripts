@@ -76,7 +76,7 @@
 
     //Sometimes the file contains hidden layers and I want to remove all hidden layers
     function removeHiddenLayers(doc) {
-        for (var i = 0; i < doc.layers.length; i++) {
+        for (var i = doc.layers.length -1; i >= 0; i--) {
             var activeLayer = doc.layers[i];
             if (!activeLayer.visible) {
                 activeLayer.visible = true;
@@ -93,6 +93,7 @@
         if (app.documents.length > 0) {
             var saveName = new File(dest);
             saveOpts = new PDFSaveOptions();
+            saveOpts.viewAfterSaving = false;
             doc.saveAs(saveName, saveOpts);
         }
     };
